@@ -1,5 +1,5 @@
 import { BookService } from './../book.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Response } from '@angular/http';
 
 @Component({
@@ -8,13 +8,14 @@ import { Response } from '@angular/http';
   styleUrls: ['./searchbar.component.css']
 })
 export class SearchbarComponent implements OnInit {
+  @ViewChild('searchInput') searchInput: ElementRef;
 
   constructor(private bookService: BookService) { }
 
   searchBook() {
-    // this.bookService.searchBook('python');
-    this.bookService.searchBook('python').subscribe((response) => console.log(response),
-       (error) => console.log(error));
+    this.bookService.searchBook(this.searchInput.nativeElement.value).subscribe();
+    // this.bookService.searchBook(this.searchInput.nativeElement.value).subscribe((response) => console.log(response),
+    //    (error) => console.log(error));
   }
 
   ngOnInit() {

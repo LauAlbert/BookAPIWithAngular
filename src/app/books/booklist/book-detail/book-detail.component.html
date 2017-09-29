@@ -1,0 +1,16 @@
+<div *ngIf="book; else noBook">
+  <div class="row">
+      <img class="img-responsive" style="margin:auto" [src]="book.volumeInfo.imageLinks.thumbnail" />
+  </div>
+  <br>
+  <p>Title: {{book.volumeInfo.title}}</p>
+  <p>Pages: {{book.volumeInfo.pageCount}}</p>
+  <p>Language: {{book.volumeInfo.language}}</p>
+  <p>Categories: {{book.volumeInfo.categories}}</p>
+  <p>Description:</p>
+  <p>{{book.volumeInfo.description}}</p>
+</div>
+
+<ng-template #noBook>
+  <h3>Search and click on a book for more info</h3>
+</ng-template>

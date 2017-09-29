@@ -1,3 +1,5 @@
+import { Book } from './../../book.model';
+import { BookService } from './../../../book.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./book-detail.component.css']
 })
 export class BookDetailComponent implements OnInit {
+  book: Book;
 
-  constructor() { }
+  constructor(private bookService: BookService) { }
 
   ngOnInit() {
+    this.bookService.selectedBook.subscribe((book) => this.book = book);
   }
 
 }
